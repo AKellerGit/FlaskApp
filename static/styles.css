@@ -1,0 +1,37 @@
+@media (min-width: 992px){
+.mb-lg-0, .my-lg-0 {
+    margin-right: 135px;
+}
+
+.navbar-dark .navbar-brand {
+    margin-left: 135px;
+}
+}
+
+@media (min-width: 1150px){
+.mb-lg-0, .my-lg-0 {
+    margin-right: 200px;
+}
+
+.navbar-dark .navbar-brand {
+    margin-left: 200px;
+}
+}
+
+
+@media (min-width: 1350px){
+.navbar-dark .navbar-brand {
+    margin-left: 300px;
+}
+.mb-lg-0, .my-lg-0 {
+    margin-right: 300px;
+}
+}
+
+.BS-font-color {
+	color: #28a745 !important;
+}
+
+.bg-color {
+	background-color: #003503 !important;
+}
