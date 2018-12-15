@@ -20,7 +20,7 @@
       <li class="nav-item">
         <a class="nav-link BS-font-color" href="/about">About</a>
       </li>
-      <li class="nav-item dropdown">
+      <!--<li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle BS-font-color" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Dropdown
         </a>
@@ -33,7 +33,7 @@
       </li>
       <li class="nav-item">
         <a class="nav-link disabled BS-font-color" href="#">Disabled</a>
-      </li>
+      </li>-->
     </ul>
     <!--<form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -48,6 +48,16 @@
 </head>
 <body>
   <div class="container">
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+      <div class="alert alert-{{ category }}">
+        {{ message }}
+      </div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+
   {% block content %}
   {% endblock content %}
 </div>
