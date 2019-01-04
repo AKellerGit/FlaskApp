@@ -1,17 +1,7 @@
-from flask import Flask, render_template, url_for, flash, redirect
-from forms import RegistrationForm, LoginForm
-from flask_sqlalchemy import SQLAlchemy
-app = Flask(__name__)
-
-app.config.update(dict(
-    SECRET_KEY="powerful secretkey",
-    WTF_CSRF_SECRET_KEY="a csrf secret key"
-))
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite://site.db'
-
-db = SQLAlchemy(app)
-
-
+from flaskapp.models import User, Post
+from flask import render_template, url_for, flash, redirect
+from flaskapp.forms import RegistrationForm, LoginForm
+from flaskapp import app
 
 @app.route("/")
 @app.route("/home")
@@ -36,6 +26,3 @@ def register():
 def login():
 	form = LoginForm()
 	return render_template('login.html', form=form)
-
-if __name__ == '__main__':
-	app.run(debug=True)
