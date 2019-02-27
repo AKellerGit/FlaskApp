@@ -2,7 +2,8 @@
 
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-
+from flask_bcrypt import Bcrypt
+from flask_login import LoginManager
 
 app = Flask(__name__)
 
@@ -12,7 +13,12 @@ app.config.update(dict(
 ))
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 
+#db now contains all functionality from sqlalchemy and sqlalchemy ORM
 db = SQLAlchemy(app)
 
-#routes import here to avoid circular importing!
+
+bcrypt = Bcrypt(app)
+login_manager = LoginManager(app)
+
+#routes import here to avoid circular importing
 from flaskapp import routes
