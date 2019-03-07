@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Home</title>
+  {% if title %}
+  <title>Flaskapp - {{ title }}</title>
+  {% else %}
+  <title>Flaskapp</title>
+  {% endif %}
     <!-- Required meta tags -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -15,10 +19,10 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link BS-font-color" href="/">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link BS-font-color" href="{{ url_for('home') }}">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link BS-font-color" href="/about">About</a>
+        <a class="nav-link BS-font-color" href="{{ url_for('about') }}">About</a>
       </li>
       <!--<li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle BS-font-color" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -40,8 +44,13 @@
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>-->
     <ul class="nav navbar-nav" style="float: right">
-      <li><a href="/register" class="navbar-nav pull-right BS-font-color">Register</a></li>&nbsp;&nbsp;
-      &nbsp;&nbsp;<li><a href="/login" class="navbar-nav pull-right BS-font-color">Login</a></li>
+      {% if current_user.is_authenticated %}
+                <a class="navbar-nav pull-right BS-font-color" href="{{ url_for('new_post') }}">New Post</a>&nsbp;
+                <a class="navbar-nav pull-right BS-font-color" href="{{ url_for('logout') }}">Logout</a>
+              {% else %}
+                <a class="navbar-nav pull-right BS-font-color" href="{{ url_for('login') }}">Login</a>&nsbp;
+                <a class="navbar-nav pull-right BS-font-color" href="{{ url_for('register') }}">Register</a>
+              {% endif %}
     </ul>
   </div>
 </nav>

@@ -1,5 +1,14 @@
 {% extends "layout.html" %}
 {% block content %}
-	<h1>Home Page</h1>
-	
+    {% for post in posts %}
+        <article class="text-center">
+          <div class="">
+            <div class="">
+              <a class="" href="#">{{ post.author.username }}</a>
+			</div>
+			<h2><a class="article-title" href="{{ url_for('post', post_id=post.id) }}">see</a></h2>
+            <p class="">{{ post.content }}</p>
+          </div>
+        </article>
+    {% endfor %}
 {% endblock content %}
